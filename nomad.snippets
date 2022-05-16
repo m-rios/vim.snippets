@@ -1,0 +1,20 @@
+snippet job
+	job "${1:job_name}" {
+		group "$1" {
+			task "$1" {
+				driver = "${2:docker}"
+
+				config {
+					$0
+				}
+			}
+		}
+	}
+snippet mount
+	mount {
+		type = "${1:bind | volume | tmpfs}"
+		source = "${2:path in host | volume name}"
+		target = "${3:path in container}"
+		readonly = "${4:false}"
+		$0
+	}	
